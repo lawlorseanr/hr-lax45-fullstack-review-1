@@ -14,7 +14,8 @@ const controller = {
         .catch(err => res.status(404).json(err));
     },
     updateName: function (req, res) {
-      Student.findByIdAndUpdate({ _id: req.body }, update, options)
+      console.log(req.params.id.slice(1))
+      Student.findByIdAndUpdate({ _id: req.params.id.slice(1) }, req.body)
         .then(response => res.status(200).json(response))
         .catch(err => res.status(404).json(err));
     }

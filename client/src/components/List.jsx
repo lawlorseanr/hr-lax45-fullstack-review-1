@@ -6,7 +6,7 @@ import _ from 'lodash';
 const List = ({ students }) => {
   return (
     <div>
-      {_.map(students, student => <ListElement key={student._id}student={student}/>)}
+      {_.map(students, student => <ListElement key={student._id} student={student}/>)}
     </div>
   );
 }
