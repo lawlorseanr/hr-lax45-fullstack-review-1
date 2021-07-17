@@ -1,16 +1,22 @@
+const _ = require('lodash');
+const Student = require('../db/Student.js');
+
 const controller = {
   students: {
     getStudents: function (req, res) {
-      // TODO: add your code here to fetch all students
-
+      Student.find()
+        .then(students => res.status(200).json(students))
+        .catch(err => res.status(500).json(err));
     },
     postStudent: function (req, res) {
-      // TODO: add your code here to add a new student
-
+      Student.create(req.body)
+        .then(response => res.status(200).json(response))
+        .catch(err => res.status(404).json(err));
     },
     updateName: function (req, res) {
-      // TODO: add your code here to update a student's name
-
+      Student.findByIdAndUpdate({ _id: req.body }, update, options)
+        .then(response => res.status(200).json(response))
+        .catch(err => res.status(404).json(err));
     }
   }
 };
